@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Хитозан: Материалы для учителя</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #1e6fd9;
+    --primary-light: #e8f1fd;
+    --accent: #ffb400;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --gray: #64748b;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+    --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--light);
+    color: #1e293b;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  /* ШАПКА */
+  .header {
+    background: linear-gradient(135deg, #1e6fd9, #0ea5e9);
+    color: #fff;
+    padding: 32px 40px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .header h1 { font-size: 1.8rem; margin-bottom: 10px; }
+  .header p { font-size: 1rem; opacity: 0.95; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 14px;
+  }
+
+  /* СЕКЦИИ */
+  .section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary-light);
+  }
+  .section h3 { font-size: 1.05rem; color: #1e293b; margin: 20px 0 12px; }
+
+  /* QR-БЛОК */
+  .qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .qr-box {
+    background: #fff;
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    padding: 16px;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qr-box img { width: 100%; height: 100%; }
+  .qr-caption { text-align: center; color: var(--gray); font-size: 0.9rem; }
+
+  .url-box {
+    background: var(--primary-light);
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--primary);
+    word-break: break-all;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 600px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: #1557b0; }
+
+  /* ИНСТРУКЦИЯ */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    padding: 16px 0 16px 56px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .steps li b { color: var(--primary); }
+
+  /* ТАБЛИЦЫ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 12px 0;
+  }
+  th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 0.85rem; }
+  tr:hover { background: var(--light); }
+  .ok { color: var(--success); font-weight: 700; }
+  .no { color: var(--danger); font-weight: 700; }
+
+  /* КНОПКИ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(30,111,217,0.3); }
+  .btn-primary:hover { background: #1557b0; transform: translateY(-2px); }
+
+  /* ИНФО-БЛОКИ */
+  .info-block {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    font-size: 0.95rem;
+  }
+  .info-block.warning { background: #fef3c7; border-left-color: var(--accent); }
+  .info-block b { display: block; margin-bottom: 6px; }
+
+  /* БАННЕР ПЕЧАТИ */
+  .print-banner {
+    background: linear-gradient(135deg, #ffb400, #f59e0b);
+    color: #fff;
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+  .print-banner h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .print-banner p { font-size: 0.9rem; opacity: 0.95; }
+  .print-banner .btn {
+    background: #fff;
+    color: #d97706;
+    font-size: 1rem;
+    padding: 16px 32px;
+  }
+  .print-banner .btn:hover { background: #fef3c7; transform: translateY(-2px); }
+
+  /* БЛОК КЕЙСА */
+  .case-block {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0f9ff;
+    border-radius: 14px;
+    border: 2px solid var(--primary);
+  }
+  .case-block h3 {
+    margin-bottom: 12px;
+    color: var(--primary);
+    font-size: 1.05rem;
+  }
+  .case-block p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 14px;
+  }
+
+  /* АДАПТИВ */
+  @media print {
+    body { background: #fff; }
+    .section { box-shadow: none; border: 1px solid var(--border); page-break-inside: avoid; }
+    .qr-section, .copy-btn, .print-banner { display: none; }
+  }
+
+  @media (max-width: 700px) {
+    .header h1 { font-size: 1.3rem; }
+    .section { padding: 20px; }
+    .qr-box { width: 220px; height: 220px; }
+    .print-banner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ШАПКА -->
+  <div class="header">
+    <h1>🎓 Хитозан: Материалы для учителя</h1>
+    <p>Всё для проведения урока в 8–10 классах</p>
+    <span class="badge">Проект «Первые» · Биотехнологии</span>
+  </div>
+
+  <!-- QR-КОД -->
+  <div class="section">
+    <h2>📱 QR-код и ссылка на игру</h2>
+    <div class="qr-section">
+      <div class="qr-box">
+        <img id="qrImg" src="" alt="QR-код на игру">
+      </div>
+      <p class="qr-caption">Покажите на проекторе или распечатайте — ученики сканируют и сразу попадают в игру</p>
+
+      <div class="url-box">
+        <span id="gameUrl">https://example.com/chitosan-game</span>
+        <button class="copy-btn" onclick="copyUrl()">📋 Копировать</button>
+      </div>
+      <p style="font-size:0.8rem; color:var(--gray);">⚠️ Замените ссылку на адрес вашего сайта после публикации</p>
+    </div>
+  </div>
+
+  <!-- ИНСТРУКЦИЯ -->
+  <div class="section">
+    <h2>📋 Пошаговая инструкция (45 минут)</h2>
+
+    <h3>⏱️ Хронометраж</h3>
+    <table>
+      <thead><tr><th>Этап</th><th>Время</th><th>Что делают</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Введение</b></td><td>5 мин</td><td>Учитель рассказывает о хитозане и хитине, показывает презентацию</td></tr>
+        <tr><td><b>2. Правила игры</b></td><td>5 мин</td><td>Ученики сканируют QR-код, открывают игру, читают правила</td></tr>
+        <tr><td><b>3. Игра</b></td><td>25 мин</td><td>Каждый играет за свой завод, делает 8 ходов, зарабатывает баланс</td></tr>
+        <tr><td><b>4. Результаты</b></td><td>5 мин</td><td>Открывается общий рейтинг, обсуждаются стратегии</td></tr>
+        <tr><td><b>5. Рефлексия</b></td><td>5 мин</td><td>Итоговые вопросы, обсуждение</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🎯 Подробный план</h3>
+    <ol class="steps">
+      <li><b>Введение (5 мин)</b><br>Расскажите, что такое хитозан и хитин. Спросите: «Кто знает, из чего делают панцирь краба?» Покажите презентацию.</li>
+      <li><b>Знакомство с игрой (5 мин)</b><br>Раздайте QR-коды или покажите на экране. Попросите учеников открыть игру. Объясните: каждый играет за свой завод, цель — заработать максимум.</li>
+      <li><b>Игровой процесс (25 мин)</b><br>Ученики делают по 8 ходов. Каждый ход: выбирают город → сырьё → транспорт. В конце вводят имя и отправляют результат в рейтинг.</li>
+      <li><b>Подведение итогов (5 мин)</b><br>Откройте общий рейтинг на проекторе. Обсудите: почему одни заработали больше? Какая стратегия оказалась лучшей?</li>
+      <li><b>Рефлексия (5 мин)</b><br>Вопросы: Что нового узнали о хитозане? Почему важно развивать биотехнологии в России? Какие регионы выгоднее для добычи сырья? Как транспорт влияет на цену?</li>
+    </ol>
+
+    <div class="info-block warning">
+      <b>⚠️ Если в классе нет телефонов</b>
+      Скачайте единый файл с материалами для офлайн-игры (кнопка ниже): карточки, бланк подсчёта, правила. Распечатайте и играйте командами.
+    </div>
+  </div>
+
+  <!-- МАТЕРИАЛЫ ДЛЯ ОФЛАЙН-ИГРЫ + КЕЙС -->
+  <div class="section">
+    <h2>🖨️ Материалы для офлайн-игры</h2>
+    <p style="color:var(--gray); margin-bottom:16px;">Всё в одном файле: карточки сырья, заводы, города, бланк подсчёта и правила. Нажмите кнопку — откроется готовый документ для печати.</p>
+
+    <div class="print-banner">
+      <div>
+        <h3>📄 Единый файл для печати</h3>
+        <p>Карточки + бланк + правила — 6–8 страниц А4</p>
+      </div>
+      <button class="btn" onclick="printAll()">🖨️ Открыть и распечатать</button>
+    </div>
+
+    <div class="info-block">
+      <b>📄 Что внутри файла</b>
+      <ul style="padding-left:20px; margin-top:8px; line-height:1.8;">
+        <li>Страница 1 — Правила офлайн-игры</li>
+        <li>Страница 2 — Карточки сырья (4 шт.)</li>
+        <li>Страница 3 — Карточки заводов (3 шт.)</li>
+        <li>Страница 4 — Карта городов (4 шт.)</li>
+        <li>Страница 5–6 — Бланки подсчёта (3 шт.)</li>
+      </ul>
+    </div>
+
+    <!-- СКАЧИВАНИЕ КЕЙСА -->
+    <div class="case-block">
+      <h3>📎 Кейс-задание (PDF)</h3>
+      <p>Официальное описание кейса от заказчика — можно скачать и распечатать для работы.</p>
+      <a href="кейс.pdf" download class="btn btn-primary">
+        ⬇️ Скачать кейс (PDF)
+      </a>
+    </div>
+  </div>
+
+  <!-- МЕТОДИКА -->
+  <div class="section">
+    <h2>📚 Методические материалы</h2>
+
+    <h3>🎯 Цели урока</h3>
+    <ul style="padding-left:20px; line-height:1.9;">
+      <li><b>Образовательная:</b> познакомить с понятиями «хитин», «хитозан», «биотехнологии»; показать связь географии, экономики и биологии.</li>
+      <li><b>Развивающая:</b> развить системное мышление, умение анализировать, сравнивать, делать выводы.</li>
+      <li><b>Воспитательная:</b> сформировать интерес к науке и технологиям, показать важность импортозамещения.</li>
+    </ul>
+
+    <h3>📖 Ключевые понятия</h3>
+    <table>
+      <thead><tr><th>Термин</th><th>Определение</th></tr></thead>
+      <tbody>
+        <tr><td><b>Хитин</b></td><td>Природный биополимер, основа панцирей ракообразных и кутикулы насекомых</td></tr>
+        <tr><td><b>Хитозан</b></td><td>Производное хитина, используется в медицине, косметологии, экологии</td></tr>
+        <tr><td><b>Биотехнология</b></td><td>Наука об использовании живых организмов для создания полезных продуктов</td></tr>
+        <tr><td><b>Импортозамещение</b></td><td>Замена импортных товаров отечественными</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🏭 Заводы и аллергии (шпаргалка)</h3>
+    <table>
+      <thead>
+        <tr><th>Завод</th><th>🦀 Краб</th><th>🦐 Креветка</th><th>🦞 Рак</th><th>🐛 Насекомые</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>🏭 Промышленность</b></td><td class="ok">✓ OK</td><td class="ok">✓ OK</td><td class="ok">✓ OK</td><td class="ok">✓ OK</td></tr>
+        <tr><td><b>💊 Медицина</b></td><td class="ok">✓ +30%</td><td class="ok">✓ +30%</td><td class="no">✗ аллергия</td><td class="no">✗ аллергия</td></tr>
+        <tr><td><b>🌾 Фермерство</b></td><td class="no">✗ аллергия</td><td class="no">✗ аллергия</td><td class="ok">✓ +20%</td><td class="ok">✓ +20%</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🗺️ Города и сырьё</h3>
+    <table>
+      <thead><tr><th>Город</th><th>Сильное сырьё</th><th>Цена</th><th>Качество</th><th>Транспорт</th></tr></thead>
+      <tbody>
+        <tr><td>🌊 Мурманск</td><td>🦀 Краб</td><td>30💰</td><td>1.0</td><td>море, ж/д, авиа</td></tr>
+        <tr><td>🌊 Владивосток</td><td>🦐 Креветка</td><td>25💰</td><td>1.0</td><td>море, ж/д, авиа</td></tr>
+        <tr><td>🏞️ Астрахань</td><td>🦞 Рак</td><td>30💰</td><td>1.0</td><td>ж/д, авиа</td></tr>
+        <tr><td>❄️ Архангельск</td><td>🐛 Насекомые</td><td>25💰</td><td>1.0</td><td>море, ж/д, авиа</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🚚 Транспорт</h3>
+    <table>
+      <thead><tr><th>Вид</th><th>Цена</th><th>Риск потери</th><th>Особенность</th></tr></thead>
+      <tbody>
+        <tr><td>🚢 Море</td><td>50💰</td><td>15%</td><td>Только из портов</td></tr>
+        <tr><td>🚂 Ж/Д</td><td>100💰</td><td>5%</td><td>Универсально</td></tr>
+        <tr><td>✈️ Авиа</td><td>200💰</td><td>0%</td><td>Дорого, но надёжно</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🧮 Формула расчёта</h3>
+    <div style="background:var(--light); padding:16px; border-radius:12px; font-family:monospace; font-size:0.95rem;">
+      Доход = Цена_сырья × 2 × Качество × Бонус_завода<br>
+      Расход = Стоимость_транспорта<br>
+      <b>Прибыль = Доход − Расход</b>
+    </div>
+
+    <h3>❓ Вопросы для рефлексии</h3>
+    <ul style="padding-left:20px; line-height:1.9;">
+      <li>Почему хитозан называют «материалом будущего»?</li>
+      <li>Какие регионы России наиболее перспективны для производства хитозана?</li>
+      <li>Как выбор транспорта влияет на себестоимость продукта?</li>
+      <li>Почему важно развивать биотехнологии внутри страны?</li>
+      <li>Какие ещё отрасли могут использовать хитозан?</li>
+    </ul>
+  </div>
+
+  <!-- ПОДВАЛ -->
+  <div style="text-align:center; padding:32px 0; color:var(--gray); font-size:0.9rem;">
+    <p>Проект «Первые» · Биотехнологии · Хитозан</p>
+    <p style="margin-top:8px;">© 2025</p>
+  </div>
+
+</div>
+
+<script>
+// QR-код и ссылка
+const GAME_URL = "https://example.com/chitosan-game";
+document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(GAME_URL)}`;
+document.getElementById('gameUrl').textContent = GAME_URL;
+
+function copyUrl() {
+  navigator.clipboard.writeText(GAME_URL).then(() => alert('Ссылка скопирована!'));
+}
+
+// ЕДИНЫЙ ФАЙЛ ДЛЯ ПЕЧАТИ
+function printAll() {
+  const html = `
+    <html><head><meta charset="UTF-8"><title>Хитозан — материалы для офлайн-игры</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { font-family: Arial, sans-serif; padding: 20px; color: #1e293b; }
+      h1 { text-align: center; color: #1e6fd9; margin-bottom: 8px; font-size: 1.6rem; }
+      h2 { color: #1e6fd9; font-size: 1.2rem; margin: 24px 0 12px; border-bottom: 2px solid #e8f1fd; padding-bottom: 8px; }
+      .sub { text-align: center; color: #666; margin-bottom: 24px; font-size: 0.9rem; }
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+      .card {
+        border: 3px solid #1e6fd9; border-radius: 14px; padding: 20px;
+        text-align: center; page-break-inside: avoid; min-height: 170px;
+      }
+      .card.green { border-color: #22c55e; }
+      .card .icon { font-size: 3rem; margin-bottom: 8px; }
+      .card h3 { font-size: 1.1rem; margin-bottom: 6px; color: #1e6fd9; }
+      .card.green h3 { color: #22c55e; }
+      .card p { font-size: 0.85rem; color: #666; }
+      .card .allowed { font-size: 1.6rem; margin: 10px 0; }
+      .card .bonus { background: #e8f1fd; padding: 6px 10px; border-radius: 6px; display: inline-block; color: #1e6fd9; font-weight: 600; font-size: 0.85rem; }
+      .card .row { margin: 6px 0; font-size: 0.85rem; text-align: left; }
+      .card .label { font-weight: 700; color: #666; }
+      .page-break { page-break-before: always; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      th, td { border: 1px solid #333; padding: 6px; text-align: center; font-size: 0.8rem; }
+      th { background: #1e6fd9; color: #fff; }
+      td:first-child { text-align: left; }
+      .total { background: #fef3c7; font-weight: 700; }
+      .footer { margin-top: 16px; font-size: 0.8rem; color: #666; }
+      ol, ul { padding-left: 22px; line-height: 1.8; font-size: 0.9rem; }
+      .info { background: #e8f1fd; padding: 14px; border-radius: 10px; border-left: 4px solid #1e6fd9; margin: 12px 0; font-size: 0.9rem; }
+      .score-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; flex-wrap: wrap; gap: 10px; }
+      .score-title { text-align: center; font-size: 1.1rem; font-weight: 700; color: #1e6fd9; margin-bottom: 12px; }
+    </style></head><body>
+
+    <h1>🦀 Хитозан: Путь от панциря до продукта</h1>
+    <p class="sub">Материалы для офлайн-игры · Распечатайте и разрежьте по границам</p>
+
+    <h2>📜 Правила офлайн-игры</h2>
+    <div class="info"><b>Цель:</b> заработать максимум денег, доставив сырьё из городов в Москву.</div>
+    <ol>
+      <li>Разделите класс на <b>3 команды-завода</b>: Промышленность 🏭, Медицина 💊, Фермерство 🌾.</li>
+      <li>Раздайте каждой команде карточку завода и бланк подсчёта.</li>
+      <li>Выложите на стол карточки сырья и карту городов.</li>
+      <li>Каждая команда по очереди выбирает: <b>город → сырьё → транспорт</b>.</li>
+      <li>Учитель объявляет результат, команда записывает в бланк.</li>
+      <li>После <b>8 раундов</b> подсчитывается итог. Побеждает команда с максимальным балансом.</li>
+    </ol>
+    <div class="info"><b>Формула:</b> Доход = Цена_сырья × 2 × Качество × Бонус_завода. Прибыль = Доход − Расход транспорта.</div>
+
+    <div class="page-break"></div>
+    <h2>🎴 Карточки сырья</h2>
+    <div class="grid-2">
+      <div class="card"><div class="icon">🦀</div><h3>Панцирь краба</h3><p>Высокое качество, подходит для медицины</p></div>
+      <div class="card"><div class="icon">🦐</div><h3>Панцирь креветки</h3><p>Высокое качество, подходит для медицины</p></div>
+      <div class="card"><div class="icon">🦞</div><h3>Панцирь рака</h3><p>Подходит для фермерства</p></div>
+      <div class="card"><div class="icon">🐛</div><h3>Кутикулы насекомых</h3><p>Подходит для фермерства</p></div>
+    </div>
+
+    <div class="page-break"></div>
+    <h2>🏭 Карточки заводов</h2>
+    <div class="grid-3">
+      <div class="card"><div class="icon">🏭</div><h3>Промышленность</h3><p>Универсал</p><div class="allowed">🦀 🦐 🦞 🐛</div><div class="bonus">без бонусов</div></div>
+      <div class="card"><div class="icon">💊</div><h3>Медицина</h3><p>Только морепродукты</p><div class="allowed">🦀 🦐</div><div class="bonus">+30% к крабу и креветке</div></div>
+      <div class="card"><div class="icon">🌾</div><h3>Фермерство</h3><p>Без морепродуктов</p><div class="allowed">🦞 🐛</div><div class="bonus">+20% к раку и насекомым</div></div>
+    </div>
+
+    <div class="page-break"></div>
+    <h2>🗺️ Карта городов</h2>
+    <div class="grid-2">
+      <div class="card green"><div class="icon">🌊</div><h3>Мурманск</h3><div class="row"><span class="label">Сильное:</span> 🦀 Краб — 30💰 (кач. 1.0)</div><div class="row"><span class="label">Слабое:</span> 🐛 Насекомые — 120💰 (кач. 0.4)</div><div class="row"><span class="label">Транспорт:</span> море, ж/д, авиа</div></div>
+      <div class="card green"><div class="icon">🌊</div><h3>Владивосток</h3><div class="row"><span class="label">Сильное:</span> 🦐 Креветка — 25💰 (кач. 1.0)</div><div class="row"><span class="label">Слабое:</span> 🦀 Краб — 70💰 (кач. 0.7)</div><div class="row"><span class="label">Транспорт:</span> море, ж/д, авиа</div></div>
+      <div class="card green"><div class="icon">🏞️</div><h3>Астрахань</h3><div class="row"><span class="label">Сильное:</span> 🦞 Рак — 30💰 (кач. 1.0)</div><div class="row"><span class="label">Слабое:</span> 🦀 Краб — 90💰 (кач. 0.5)</div><div class="row"><span class="label">Транспорт:</span> ж/д, авиа (нет моря!)</div></div>
+      <div class="card green"><div class="icon">❄️</div><h3>Архангельск</h3><div class="row"><span class="label">Сильное:</span> 🐛 Насекомые — 25💰 (кач. 1.0)</div><div class="row"><span class="label">Слабое:</span> 🦐 Креветка — 80💰 (кач. 0.6)</div><div class="row"><span class="label">Транспорт:</span> море, ж/д, авиа</div></div>
+    </div>
+
+    ${[1,2,3].map(n => `
+      <div class="page-break"></div>
+      <div class="score-title">🧮 Бланк подсчёта — команда №${n}</div>
+      <div class="score-header">
+        <div><b>Завод:</b> ____________________</div>
+        <div><b>Команда:</b> ____________________</div>
+        <div><b>Дата:</b> ____________</div>
+      </div>
+      <table>
+        <thead><tr><th>Раунд</th><th>Город</th><th>Сырьё</th><th>Транспорт</th><th>Доход</th><th>Расход</th><th>Прибыль</th><th>Баланс</th></tr></thead>
+        <tbody>
+          <tr><td>Старт</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td><b>1000</b></td></tr>
+          ${[1,2,3,4,5,6,7,8].map(i => `<tr><td>${i}</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`).join('')}
+          <tr class="total"><td colspan="7" style="text-align:right;">ИТОГО:</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="footer">
+        <p><b>Формула:</b> Доход = Цена_сырья × 2 × Качество × Бонус_завода</p>
+        <p><b>Прибыль</b> = Доход − Расход транспорта</p>
+      </div>
+    `).join('')}
+
+    </body></html>
+  `;
+
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+  setTimeout(() => w.print(), 600);
+}
+</script>
+</body>
+</html>
